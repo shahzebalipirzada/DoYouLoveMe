@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yes or No</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: calibri;
+      }
+      body {
+        background-image: url(bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+      }
+      .main {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .yn-div {
+        margin: auto;
+        width: 50%;
+        height: 80vh;
+        box-shadow: 4px 4px 20px pink;
+        margin-top: 10vh;
+        border-radius: 40px;
+        backdrop-filter: blur(20px);
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+      .yn-div h1 {
+        color: pink;
+        text-shadow: 1px 1px 5px red;
+      }
+      .yn-div #yes {
+        padding: 20px;
+        background-color: pink;
+        color: red;
+        cursor: pointer;
+        font-size: larger;
+        font-weight: bolder;
+        border: none;
+        outline: none;
+        box-shadow: 2px 2px 10px red;
+        margin: 40px;
+        width: 150px;
+        border-radius: 50px;
+      }
+      .yn-div #no {
+        position: relative;
+        padding: 20px;
+        background-color: pink;
+        color: red;
+        cursor: pointer;
+        font-size: larger;
+        font-weight: bolder;
+        border: none;
+        outline: none;
+        box-shadow: 2px 2px 10px red;
+        margin: 40px;
+        width: 150px;
+        border-radius: 50px;
+      }
+      canvas#confetti {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  pointer-events: none;
+}
+.too-main{
+    width: 100%;
+height: 100vh;
+display: none;
+position:fixed;
+z-index: 1;
+}
+.too-main .too{
+    width: 70%;
+    height: 40vh;
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 20vh;
+    box-shadow: 2px 2px 20px pink;
+
+}
+.too h1{
+    color: pink;
+    font-size: 40px;
+    text-shadow: 1px 1px 5px red;
+
+}
+    </style>
+  </head>
+  <body>
+      <div class="main">
+        <canvas id="confetti"></canvas>
+        <div class="too-main"><div class="too"><br><br><br><br><h1>Love You Too!</h1></div></div>
+      <div class="yn-div">
+        <br /><br /><br /><br />
+        <h1>Do you Love Me?</h1>
+        <br /><button id="yes" class="yes" role="button">Yes</button>
+        <button id="no" onmouseover="myFunction()" class="no">No</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script>
+      const b = document.getElementById("no");
+      function myFunction() {
+        const i = Math.floor(Math.random() * 500) + 1;
+        const j = Math.floor(Math.random() * 500) + 1;
+
+        b.style.top = i + "px";
+        b.style.left = j + "px";
+      }
+      const button = document.querySelector("#yes");
+      const canvas = document.querySelector("#confetti");
+      const too = document.querySelector(".too-main");
+      const yn = document.querySelector(".yn-div");
+      const jsConfetti = new JSConfetti();
+
+      button.addEventListener("click", () => {
+        jsConfetti.addConfetti({
+            // emojis: ["🌸", "🌸", "🌸", "🌸", "🌸", "🌸"],
+          }).then(() => jsConfetti.addConfetti());
+          too.style.display="block";
+          yn.style.display="none";
+      });
+    
+
+      
+    </script>
+  </body>
+</html>
